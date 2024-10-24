@@ -1,41 +1,25 @@
-body {
+* {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    position: relative;
-}
-
-.background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("./Images/space.jpeg");
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
+    background-color: #f0f0f0;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
 }
 
 .clock-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     width: 300px;
     height: 300px;
-    max-width: 80vmin;
-    max-height: 80vmin;
 }
 
 .clock-face {
@@ -47,42 +31,24 @@ body {
 .clock-image {
     width: 100%;
     height: 100%;
-    object-fit: contain;
 }
 
 .hand {
     position: absolute;
-    bottom: 50%;
+    width: 50%;
+    top: 50%;
     left: 50%;
-    transform-origin: 50% 100%;
-    height: 50%;
-    width: auto;
-}
-
-.hour-hand {
-    height: 35%;
-    animation: rotateHour 43200s infinite linear;
+    transform-origin: 0 50%;  /* Rotate from the center-left of the hand */
+    transform: rotate(90deg); /* Initial rotation */
+    transition: transform 0.5s ease-in-out;
 }
 
 .minute-hand {
-    height: 45%;
-    animation: rotateMinute 3600s infinite linear;
+    height: 4px; /* Make it thicker for the minute hand */
+    background-color: black;
 }
 
-@keyframes rotateHour {
-    from {
-        transform: translateX(-50%) rotate(0deg);
-    }
-    to {
-        transform: translateX(-50%) rotate(360deg);
-    }
-}
-
-@keyframes rotateMinute {
-    from {
-        transform: translateX(-50%) rotate(0deg);
-    }
-    to {
-        transform: translateX(-50%) rotate(360deg);
-    }
+.second-hand {
+    height: 2px; /* Thinner for the second hand */
+    background-color: red;
 }
