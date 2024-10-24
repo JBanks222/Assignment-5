@@ -1,59 +1,82 @@
-.clock-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 300px;
-    height: 300px;
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;
     position: relative;
 }
 
-.clock {
-    width: 100%;
-    height: auto;
-}
-
-.hour-hand, .minute-hand {
+.background-image {
     position: absolute;
-    top: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("./Images/space.jpeg");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock-container {
+    width: 300px;
+    height: 300px;
+    max-width: 80vmin;
+    max-height: 80vmin;
+}
+
+.clock-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.clock-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%;
     left: 50%;
-    transform-origin: bottom center; /* Pivot from the bottom center of the hand */
-    transform: translate(-50%, -100%); /* Position in the center */
-    width: 5px; /* Adjust the width if needed */
-    height: 120px; /* Adjust the height if needed */
+    transform-origin: 50% 100%;
 }
 
-.minute-hand {
-    height: 150px; /* Slightly longer for the minute hand */
-}
-
-/* Animation for rotating the hands */
-@keyframes rotate-hour {
-    from {
-        transform: translate(-50%, -100%) rotate(0deg);
-    }
-    to {
-        transform: translate(-50%, -100%) rotate(360deg);
-    }
-}
-
-@keyframes rotate-minute {
-    from {
-        transform: translate(-50%, -100%) rotate(0deg);
-    }
-    to {
-        transform: translate(-50%, -100%) rotate(360deg);
-    }
-}
-
-/* Apply the animation */
 .hour-hand {
-    animation: rotate-hour 12h infinite linear; /* Full rotation in 12 hours */
+    width: 40%;
+    animation: rotateHour 43200s infinite linear;
 }
 
 .minute-hand {
-    animation: rotate-minute 60s infinite linear; /* Full rotation in 60 seconds */
+    width: 45%;
+    animation: rotateMinute 3600s infinite linear;
 }
 
+@keyframes rotateHour {
+    from {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+@keyframes rotateMinute {
+    from {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
