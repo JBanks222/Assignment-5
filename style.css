@@ -1,0 +1,59 @@
+.clock-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.clock {
+    width: 100%;
+    height: auto;
+}
+
+.hour-hand, .minute-hand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: bottom center; /* Pivot from the bottom center of the hand */
+    transform: translate(-50%, -100%); /* Position in the center */
+    width: 5px; /* Adjust the width if needed */
+    height: 120px; /* Adjust the height if needed */
+}
+
+.minute-hand {
+    height: 150px; /* Slightly longer for the minute hand */
+}
+
+/* Animation for rotating the hands */
+@keyframes rotate-hour {
+    from {
+        transform: translate(-50%, -100%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -100%) rotate(360deg);
+    }
+}
+
+@keyframes rotate-minute {
+    from {
+        transform: translate(-50%, -100%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -100%) rotate(360deg);
+    }
+}
+
+/* Apply the animation */
+.hour-hand {
+    animation: rotate-hour 12h infinite linear; /* Full rotation in 12 hours */
+}
+
+.minute-hand {
+    animation: rotate-minute 60s infinite linear; /* Full rotation in 60 seconds */
+}
+
