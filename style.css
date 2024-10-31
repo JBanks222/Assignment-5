@@ -9,7 +9,10 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-image: url('./Images/space.jpeg'); /* Background image path */
+    background-size: cover;
+    background-position: center;
+    margin: 0;
 }
 
 .container {
@@ -20,6 +23,7 @@ body, html {
     position: relative;
     width: 300px;
     height: 300px;
+    background-color: transparent;
 }
 
 .clock-face {
@@ -38,17 +42,41 @@ body, html {
     width: 50%;
     top: 50%;
     left: 50%;
-    transform-origin: 0 50%;  /* Rotate from the center-left of the hand */
-    transform: rotate(90deg); /* Initial rotation */
-    transition: transform 0.5s ease-in-out;
+    transform-origin: 0 50%;  /* Rotate from the center-left */
+    transform: rotate(90deg); /* Initial state */
 }
 
 .minute-hand {
-    height: 4px; /* Make it thicker for the minute hand */
-    background-color: black;
+    height: 4px;
+    background-image: url('./Images/Clock parts/hand.png'); /* Path to the hand image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: rotateMinute 10s linear forwards; /* 360 degrees in 10s */
 }
 
-.second-hand {
-    height: 2px; /* Thinner for the second hand */
-    background-color: red;
+.hour-hand {
+    height: 4px;
+    background-image: url('./Images/Clock parts/hand.png'); /* Path to the hand image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: rotateHour 10s linear forwards; /* 30 degrees in 10s */
+}
+
+/* Keyframes for minute and hour hand rotations */
+@keyframes rotateMinute {
+    from {
+        transform: rotate(0deg); /* Starts at 3:00 */
+    }
+    to {
+        transform: rotate(360deg); /* Completes one full rotation */
+    }
+}
+
+@keyframes rotateHour {
+    from {
+        transform: rotate(0deg); /* Starts at 3:00 */
+    }
+    to {
+        transform: rotate(30deg); /* Moves to 4:00 */
+    }
 }
